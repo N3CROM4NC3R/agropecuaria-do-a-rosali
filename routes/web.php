@@ -7,12 +7,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect()->route("home");
 });
-Route::get("/acerca-de", function () {
-    return view("misc.acerca_de");
-})->name("acerca_de.index");
-Route::get("/soporte", function(){
-    return redirect("https://parzibyte.me/blog/contrataciones-ayuda/");
-})->name("soporte.index");
 
 Auth::routes([
     "reset" => false,// no pueden olvidar contraseña

@@ -54,9 +54,10 @@ jobs:
             - node_modules
      
      
-
+      
       - run: 
           name: Deploy Master Branch
+          no_output_timeout: 60 m
           command: |
             sudo apt-get update
             sudo apt-get -qq install git-ftp

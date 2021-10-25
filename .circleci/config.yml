@@ -52,6 +52,9 @@ jobs:
           key: node-v1-{{ checksum "package.json" }}
           paths:
             - node_modules
+      - name: reset package-lock.json
+        run: git checkout package-lock.json
+        
       - run: 
           name: Deploy Master Branch
           command: |

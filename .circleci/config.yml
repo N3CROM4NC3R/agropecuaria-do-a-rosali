@@ -52,11 +52,10 @@ jobs:
           key: node-v1-{{ checksum "package.json" }}
           paths:
             - node_modules
-       - run: 
+      - run: 
           name: Deploy Master Branch
           command: |
             sudo apt-get update
             sudo apt-get -qq install git-ftp
             echo "Deploying project ..."
             git ftp push --user "agropecuariadonarosalia" --passwd "secret123." files.000webhost.com/public_html
-

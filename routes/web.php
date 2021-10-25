@@ -34,6 +34,6 @@ Route::middleware("auth")
     });
 
 
-Route::get("/in stall",function(){
+Route::get("/install",function(){
     Artisan::call("migrate");
 });

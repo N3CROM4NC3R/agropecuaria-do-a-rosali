@@ -63,5 +63,5 @@ jobs:
             sudo apt-get -qq install git-ftp
             echo "vendor/:composer.lock" > .git-ftp-include
             echo "Deploying project ..."
-            git ftp init files.000webhost.com/public_html --user "agropecuariadonarosalia" --passwd "secret123." 
+            git ftp push files.000webhost.com/public_html --user "agropecuariadonarosalia" --passwd "secret123." 
             

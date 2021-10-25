@@ -53,7 +53,7 @@ jobs:
           paths:
             - node_modules
      
-      - run: git checkout package-lock.json
+      - run: git reset --hard
 
       - run: 
           name: Deploy Master Branch

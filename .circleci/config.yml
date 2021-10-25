@@ -61,5 +61,5 @@ jobs:
             sudo apt-get update
             sudo apt-get -qq install git-ftp
             echo "Deploying project ..."
-            git ftp init --user "agropecuariadonarosalia" --passwd "secret123." files.000webhost.com/public_html
+            git ftp init files.000webhost.com/public_html --user "agropecuariadonarosalia" --passwd "secret123." 
             

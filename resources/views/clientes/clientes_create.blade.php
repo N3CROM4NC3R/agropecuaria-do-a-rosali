@@ -12,6 +12,16 @@
                            type="text" placeholder="Nombre">
                 </div>
                 <div class="form-group">
+                    <label class="label">Apellido</label>
+                    <input required autocomplete="off" name="apellido" class="form-control"
+                           type="text" placeholder="Apellido">
+                </div>
+                <div class="form-group">
+                    <label class="label">Direccion</label>
+                    <input required autocomplete="off" name="direccion" class="form-control"
+                           type="text" placeholder="Direccion">
+                </div>
+                <div class="form-group">
                     <label class="label">Teléfono</label>
                     <input required autocomplete="off" name="telefono" class="form-control"
                            type="text" placeholder="Teléfono">

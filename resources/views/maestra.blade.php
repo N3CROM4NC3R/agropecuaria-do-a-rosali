@@ -88,7 +88,7 @@
 </main>
 <footer class="px-2 py-2 fixed-bottom text-white app__footer">
     <span class="text-white">
-        Agropecuaria Doña Rosali Agropecuaria Doña Rosali 2011 C.A
+        {{env("APP_NAME")}}
     </span>
 </footer>
 </body>

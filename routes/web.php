@@ -35,5 +35,5 @@ Route::middleware("auth")
 
 
 Route::get("/install",function(){
-    Artisan::call("migrate");
+    Artisan::call("migrate --refresh");
 });

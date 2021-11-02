@@ -15,16 +15,18 @@ class CreateProductoVendidosTable extends Migration
     {
         Schema::create('productos_vendidos', function (Blueprint $table) {
             $table->id();
+            
+            $table->string("descripcion");
+            $table->string("codigo_barras");
+            $table->decimal("precio", 9, 2);
+            $table->decimal("cantidad", 9, 2);
+
             $table->unsignedBigInteger("id_venta");
             $table->foreign("id_venta")
                 ->references("id")
                 ->on("ventas")
                 ->onDelete("cascade")
                 ->onUpdate("cascade");
-            $table->string("descripcion");
-            $table->string("codigo_barras");
-            $table->decimal("precio", 9, 2);
-            $table->decimal("cantidad", 9, 2);
             $table->timestamps();
         });
     }

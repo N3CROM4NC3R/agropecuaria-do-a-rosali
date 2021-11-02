@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVentasTable extends Migration
+class CreateProductosCompradosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,26 +13,27 @@ class CreateVentasTable extends Migration
      */
     public function up()
     {
-        Schema::create('ventas', function (Blueprint $table) {
+        Schema::create('productos_comprados', function (Blueprint $table) {
             $table->id();
-            $table->decimal("precio_bruto", 9, 2);
-            $table->decimal("iva", 9, 2);
-            $table->decimal("precio_neto", 9, 2);
 
-            
-            $table->unsignedBigInteger('id_cliente');
-            $table->foreign("id_cliente")
+            $table->integer("cantidad");
+            $table->decimal("precio_unidad",9,2);
+
+            $table->unsignedBigInteger("id_proveedor");
+            $table->foreign("id_proveedor")
                 ->references("id")
-                ->on("clientes")
+                ->on("proveedores")
                 ->onDelete("cascade")
                 ->onUpdate("cascade");
 
-            $table->unsignedBigInteger('id_user');
-            $table->foreign("id_user")
+            $table->unsignedBigInteger("id_producto");
+            $table->foreign("id_producto")
                 ->references("id")
-                ->on("users")
+                ->on("productos")
                 ->onDelete("cascade")
                 ->onUpdate("cascade");
+
+
             $table->timestamps();
         });
     }
@@ -44,6 +45,6 @@ class CreateVentasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ventas');
+        Schema::dropIfExists('productos_comprados');
     }
 }

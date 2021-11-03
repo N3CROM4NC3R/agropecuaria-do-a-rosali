@@ -24,8 +24,21 @@ Route::middleware("auth")
     ->group(function () {
         Route::resource("clientes", "ClientesController");
         Route::resource("usuarios", "UserController")->parameters(["usuarios" => "user"]);
-        Route::resource("productos", "ProductosController");
+        
+        
+        Route::get("/productos", "ProductosController@index")->name("productos.index");
+        Route::get("/productos/{producto}/edit", "ProductosController@edit")->name("productos.edit");
+        Route::get("/productos/create", "ProductosController@create")->name("productos.create");
+        Route::post("/productos", "ProductosController@store")->name("productos.store");
+        Route::put("/productos/{producto}", "ProductosController@update")->name("productos.update");
+        Route::delete("/productos/{producto}", "ProductosController@destroy")->name("productos.destroy");
+
+
+
         Route::get("/ventas/ticket", "VentasController@ticket")->name("ventas.ticket");
+
+
+
         Route::resource("ventas", "VentasController");
         Route::get("/vender", "VenderController@index")->name("vender.index");
         Route::post("/productoDeVenta", "VenderController@agregarProductoVenta")->name("agregarProductoVenta");

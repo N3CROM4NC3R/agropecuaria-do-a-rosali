@@ -19,24 +19,14 @@
                            class="form-control"
                            type="text" placeholder="Descripción">
                 </div>
-                <div class="form-group">
-                    <label class="label">Precio de compra</label>
-                    <input required value="{{$producto->precio_compra}}" autocomplete="off" name="precio_compra"
-                           class="form-control"
-                           type="decimal(9,2)" placeholder="Precio de compra">
-                </div>
+                
                 <div class="form-group">
                     <label class="label">Precio de venta</label>
                     <input required value="{{$producto->precio_venta}}" autocomplete="off" name="precio_venta"
                            class="form-control"
                            type="decimal(9,2)" placeholder="Precio de venta">
                 </div>
-                <div class="form-group">
-                    <label class="label">Existencia</label>
-                    <input required value="{{$producto->existencia}}" autocomplete="off" name="existencia"
-                           class="form-control"
-                           type="decimal(9,2)" placeholder="Existencia">
-                </div>
+                
 
                 @include("notificacion")
                 <button class="btn btn-success">Guardar</button>

@@ -12,10 +12,9 @@
                     <tr>
                         <th>Código de barras</th>
                         <th>Descripción</th>
-                        <th>Precio de compra</th>
+                     
                         <th>Precio de venta</th>
-                        <th>Utilidad</th>
-                        <th>Existencia</th>
+                     
 
                         <th>Editar</th>
                         <th>Eliminar</th>
@@ -26,10 +25,9 @@
                         <tr>
                             <td>{{$producto->codigo_barras}}</td>
                             <td>{{$producto->descripcion}}</td>
-                            <td>{{$producto->precio_compra}}</td>
+                            
                             <td>{{$producto->precio_venta}}</td>
-                            <td>{{$producto->precio_venta - $producto->precio_compra}}</td>
-                            <td>{{$producto->existencia}}</td>
+                    
                             <td>
                                 <a class="btn btn-warning" href="{{route("productos.edit",[$producto])}}">
                                     <i class="fa fa-edit"></i>

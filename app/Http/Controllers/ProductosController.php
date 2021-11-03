@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Producto;
+use App\Http\Requests\ProductoCreateRequest;
+use App\Http\Requests\ProductoUpdateRequest;
 use Illuminate\Http\Request;
 
 class ProductosController extends Controller
@@ -33,23 +35,16 @@ class ProductosController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductoCreateRequest $request)
     {
-        $producto = new Producto($request->input());
+        $datos = $request->validated();
+
+        $producto = new Producto($datos);
         $producto->saveOrFail();
         return redirect()->route("productos.index")->with("mensaje", "Producto guardado");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Producto $producto
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Producto $producto)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -70,10 +65,13 @@ class ProductosController extends Controller
      * @param \App\Producto $producto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Producto $producto)
+    public function update(ProductoUpdateRequest $request, Producto $producto)
     {
-        $producto->fill($request->input());
+        $datos = $request->validated();
+        $producto->fill($datos);
+        
         $producto->saveOrFail();
+        
         return redirect()->route("productos.index")->with("mensaje", "Producto actualizado");
     }
 

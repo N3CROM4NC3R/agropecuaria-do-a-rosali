@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             "email" => "administrador@mail.com",
             "apellido" => "super",
             "cedula" => "00000000",
-            "password" => bcrypt("Secret123"),
+            "password" => bcrypt("secret123"),
         ]);
     }
 }

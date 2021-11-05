@@ -10,6 +10,13 @@ class AuthTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function test_un_visitante_puede_ver_logueo(){
+        $this->withoutExceptionHandling();
+        $this->get("/login")
+            ->assertStatus(200);
+    }
+    
+    
     public function test_un_administrador_no_puede_autenticarse_de_nuevo(){
         $this->signIn();
 

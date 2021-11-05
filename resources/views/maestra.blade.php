@@ -32,17 +32,17 @@
 
     <div class="collapse navbar-collapse" id="menu">
         <ul class="navbar-nav mr-auto">
-            @guest
+            <!-- @guest
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">Login</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">
+                    <a class="nav-link" href="">
                         Registro
                     </a>
                 </li>
-            @else
+            @else -->
                 <li class="nav-item">
                     <a class="nav-link" href="{{route("home")}}">Inicio&nbsp;<i class="fa fa-home"></i></a>
                 </li>
@@ -61,7 +61,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route("clientes.index")}}">Clientes&nbsp;<i class="fa fa-users"></i></a>
                 </li>
-            @endguest
+            <!-- @endguest -->
         </ul>
         <ul class="navbar-nav ml-auto">
             @auth

@@ -10,6 +10,7 @@ Route::get('/', function () {
 
 Auth::routes([
     "reset" => false,// no pueden olvidar contraseña
+    "register" => false
 ]);
 
 Route::get('/home', 'HomeController@index')->name('home');

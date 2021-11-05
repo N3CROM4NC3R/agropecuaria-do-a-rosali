@@ -6,6 +6,9 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
+
 class UserController extends Controller
 {
     /**
@@ -34,9 +37,12 @@ class UserController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserCreateRequest $request)
     {
-        $usuario = new User($request->input());
+        $datos = $request->validated();
+
+
+        $usuario = new User($datos);
         $usuario->password = Hash::make($usuario->password);
         $usuario->saveOrFail();
         return redirect()->route("usuarios.index")->with("mensaje", "Usuario guardado");
@@ -61,7 +67,6 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $user->password = "";
         return view("usuarios.usuarios_edit", ["usuario" => $user,
         ]);
     }
@@ -73,9 +78,11 @@ class UserController extends Controller
      * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
-        $user->fill($request->input());
+        $datos = $request->validated();
+
+        $user->fill($datos);
         $user->password = Hash::make($user->password);
         $user->saveOrFail();
         return redirect()->route("usuarios.index")->with("mensaje", "Usuario actualizado");

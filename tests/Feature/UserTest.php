@@ -19,6 +19,7 @@ class UserTest extends TestCase
 
 
     public function test_un_visitante_no_puede_ver_usuarios(){
+        
 
         $response = $this->get("/usuarios");
 

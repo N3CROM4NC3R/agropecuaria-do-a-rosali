@@ -49,17 +49,6 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param \App\User $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param \App\User $user
@@ -82,7 +71,7 @@ class UserController extends Controller
     {
         $datos = $request->validated();
         
-        $user->fill($datos);
+        $user->update($datos);
         $user->password = Hash::make($user->password);
         $user->saveOrFail();
         return redirect()->route("usuarios.index")->with("mensaje", "Usuario actualizado");

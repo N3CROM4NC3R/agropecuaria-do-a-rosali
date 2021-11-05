@@ -16,14 +16,24 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Permitir logout con petición get
 Route::get("/logout", function () {
     Auth::logout();
-    return redirect()->route("home");
+    return redirect()->route("login");
 })->name("logout");
 
 
 Route::middleware("auth")
     ->group(function () {
         Route::resource("clientes", "ClientesController");
-        Route::resource("usuarios", "UserController")->parameters(["usuarios" => "user"]);
+        
+        
+
+
+        Route::get("/usuarios", "UserController@index")->name("usuarios.index");
+        Route::get("/usuarios/{user}/edit", "UserController@edit")->name("usuarios.edit");
+        Route::get("/usuarios/create", "UserController@create")->name("usuarios.create");
+        Route::post("/usuarios", "UserController@store")->name("usuarios.store");
+        Route::put("/usuarios/{user}", "UserController@update")->name("usuarios.update");
+        Route::delete("/usuarios/{user}", "UserController@destroy")->name("usuarios.destroy");
+
         
         
         Route::get("/productos", "ProductosController@index")->name("productos.index");

@@ -24,7 +24,7 @@
                         </div>
                     @enderror
                     <label class="label">Apellido</label>
-                    <input required value="{{$usuario->apellido}}" autocomplete="off" name="name" class="form-control"
+                    <input required value="{{$usuario->apellido}}" autocomplete="off" name="apellido" class="form-control"
                            type="text" placeholder="Apellido">
                 </div>
                 <div class="form-group">

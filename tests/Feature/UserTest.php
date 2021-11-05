@@ -143,6 +143,7 @@ class UserTest extends TestCase
     }
 
     public function test_un_administrador_puede_editar_usuarios(){
+        $this->withoutExceptionHandling();
         $this->signIn();
 
         $usuario = factory(User::class)->create();

@@ -81,7 +81,7 @@ class UserController extends Controller
     public function update(UserUpdateRequest $request, User $user)
     {
         $datos = $request->validated();
-
+        
         $user->fill($datos);
         $user->password = Hash::make($user->password);
         $user->saveOrFail();

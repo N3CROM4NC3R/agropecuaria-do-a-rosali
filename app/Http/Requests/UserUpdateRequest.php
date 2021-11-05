@@ -32,12 +32,12 @@ class UserUpdateRequest extends FormRequest
             "name" => "string",
             "apellido" => "string",
             "email"    => [
-                "required",
+                "nullable",
                 "email",
                 Rule::unique("users")->ignore($user)
             ],
             "cedula" => [
-                "required",
+                "nullable",
                 "string",
                 Rule::unique("users")->ignore($user)
             ],

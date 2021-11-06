@@ -7,17 +7,32 @@
             <form method="POST" action="{{route("productos.store")}}">
                 @csrf
                 <div class="form-group">
+                    @error("codigo_barras")
+                        <div class="alert alert-danger">
+                            {{$message}}
+                        </div>
+                    @enderror
                     <label class="label">Código de barras</label>
                     <input required autocomplete="off" name="codigo_barras" class="form-control"
                            type="text" placeholder="Código de barras">
                 </div>
                 <div class="form-group">
+                    @error("descripcion")
+                        <div class="alert alert-danger">
+                            {{$message}}
+                        </div>
+                    @enderror
                     <label class="label">Descripción</label>
                     <input required autocomplete="off" name="descripcion" class="form-control"
                            type="text" placeholder="Descripción">
                 </div>
                 
                 <div class="form-group">
+                    @error("precio_venta")
+                        <div class="alert alert-danger">
+                            {{$message}}
+                        </div>
+                    @enderror
                     <label class="label">Precio de venta</label>
                     <input required autocomplete="off" name="precio_venta" class="form-control"
                            type="decimal(9,2)" placeholder="Precio de venta">

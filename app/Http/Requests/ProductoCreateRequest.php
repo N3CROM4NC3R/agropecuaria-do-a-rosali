@@ -25,7 +25,7 @@ class ProductoCreateRequest extends FormRequest
     {
         return [
             "descripcion" => "required|string",
-            "codigo_barras" => "required|string",
+            "codigo_barras" => "required|string|unique:productos",
             "precio_venta" => "required|numeric"
         ];
     }

@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
 
 class ProductoUpdateRequest extends FormRequest
 {
@@ -23,10 +25,18 @@ class ProductoUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        
+        $producto = request()->route("producto");
+
+
         return [
-            "descripcion" => "string",
-            "codigo_barras" => "string",
-            "precio_venta" => "numeric"
+            "descripcion" => "required|string",
+            "codigo_barras" => [
+                "required",
+                "string",
+                Rule::unique("productos")->ignore($producto)
+            ],
+            "precio_venta" => "required|numeric"
         ];
     }
 }

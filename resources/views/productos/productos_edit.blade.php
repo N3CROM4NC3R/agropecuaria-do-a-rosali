@@ -8,12 +8,22 @@
                 @method("PUT")
                 @csrf
                 <div class="form-group">
+                    @error("codigo_barras")
+                        <div class="alert alert-danger">
+                            {{$message}}
+                        </div>
+                    @enderror
                     <label class="label">Código de barras</label>
                     <input required value="{{$producto->codigo_barras}}" autocomplete="off" name="codigo_barras"
                            class="form-control"
                            type="text" placeholder="Código de barras">
                 </div>
                 <div class="form-group">
+                    @error("descripcion")
+                        <div class="alert alert-danger">
+                            {{$message}}
+                        </div>
+                    @enderror
                     <label class="label">Descripción</label>
                     <input required value="{{$producto->descripcion}}" autocomplete="off" name="descripcion"
                            class="form-control"
@@ -21,6 +31,11 @@
                 </div>
                 
                 <div class="form-group">
+                    @error("precio_venta")
+                        <div class="alert alert-danger">
+                            {{$message}}
+                        </div>
+                    @enderror
                     <label class="label">Precio de venta</label>
                     <input required value="{{$producto->precio_venta}}" autocomplete="off" name="precio_venta"
                            class="form-control"

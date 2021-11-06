@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Cliente;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\ClienteCreateRequest;
+use App\Http\Requests\ClienteUpdateRequest;
+
+
 class ClientesController extends Controller
 {
     /**
@@ -33,9 +37,11 @@ class ClientesController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClienteCreateRequest $request)
     {
-        (new Cliente($request->input()))->saveOrFail();
+        $datos = $request->validated();
+
+        (new Cliente($datos))->saveOrFail();
         return redirect()->route("clientes.index")->with("mensaje", "Cliente agregado");
     }
 
@@ -68,9 +74,12 @@ class ClientesController extends Controller
      * @param \App\Cliente $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(ClienteUpdateRequest $request, Cliente $cliente)
     {
-        $cliente->fill($request->input());
+
+        $datos = $request->validated();
+
+        $cliente->fill($datos);
         $cliente->saveOrFail();
         return redirect()->route("clientes.index")->with("mensaje", "Cliente actualizado");
     }

@@ -9,6 +9,6 @@ $factory->define(Producto::class, function (Faker $faker) {
     return [
         "codigo_barras" => $faker->ean13,
         "descripcion" => $faker->name,
-        "precio_venta" => $faker->randomNumber(2)
+        "precio_venta" => $faker->randomFloat(2, 0, 100)
     ];
 });

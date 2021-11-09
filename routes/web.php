@@ -45,12 +45,17 @@ Route::middleware("auth")
         Route::delete("/productos/{producto}", "ProductosController@destroy")->name("productos.destroy");
 
 
-
+        
+        Route::get("/ventas", "VentasController@index")->name("ventas.index");
+        Route::get("/ventas/{venta}", "VentasController@show")->name("ventas.show");
+        Route::delete("/ventas/{venta}", "VentasController@destroy")->name("ventas.destroy");
         Route::get("/ventas/ticket", "VentasController@ticket")->name("ventas.ticket");
 
 
 
-        Route::resource("ventas", "VentasController");
+        /* Route::resource("ventas", "VentasController"); */
+
+
         Route::get("/vender", "VenderController@index")->name("vender.index");
         Route::post("/productoDeVenta", "VenderController@agregarProductoVenta")->name("agregarProductoVenta");
         Route::delete("/productoDeVenta", "VenderController@quitarProductoDeVenta")->name("quitarProductoDeVenta");

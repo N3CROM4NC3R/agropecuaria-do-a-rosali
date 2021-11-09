@@ -38,7 +38,7 @@
                 <tr>
                     <td colspan="3"></td>
                     <td><strong>Total</strong></td>
-                    <td>${{number_format($total, 2)}}</td>
+                    <td>${{$venta->precio_neto}}</td>
                 </tr>
                 </tfoot>
             </table>

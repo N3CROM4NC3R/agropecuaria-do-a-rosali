@@ -22,7 +22,7 @@ $factory->define(User::class, function (Faker $faker) {
     
 
     return [
-        'name' => $faker->name,
+        'name' => $faker->firstName,
         "apellido" => $faker->lastName,
         "cedula" => $faker->nationalId,
         'email' => $faker->unique()->safeEmail,

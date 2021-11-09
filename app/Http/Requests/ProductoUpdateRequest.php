@@ -30,13 +30,13 @@ class ProductoUpdateRequest extends FormRequest
 
 
         return [
-            "descripcion" => "required|string",
+            "descripcion" => "required_without_all:codigo_barras,precio_venta|string",
             "codigo_barras" => [
-                "required",
+                "required_without_all:descripcion,precio_venta",
                 "string",
                 Rule::unique("productos")->ignore($producto)
             ],
-            "precio_venta" => "required|numeric"
+            "precio_venta" => "required_without_all:descripcion,codigo_barras|numeric"
         ];
     }
 }

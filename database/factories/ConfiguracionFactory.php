@@ -9,6 +9,7 @@ $factory->define(Configuracion::class, function (Faker $faker) {
     
     
     return [
-        
+        "nombre" => $faker->name,
+        "valor" => $faker->randomNumber(2)
     ];
 });

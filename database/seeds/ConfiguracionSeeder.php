@@ -14,8 +14,8 @@ class ConfiguracionSeeder extends Seeder
     public function run()
     {
        DB::table("configuraciones")->insert([
-           "nombre" => "porcentaje_iva",
-           "valor" => "0%"
+           "nombre" => "iva",
+           "valor" => "0"
        ]);
     }
 }

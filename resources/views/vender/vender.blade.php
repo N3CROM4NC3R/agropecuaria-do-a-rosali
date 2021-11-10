@@ -42,7 +42,9 @@
                 </div>
             </div>
             @if(session("productos") !== null)
-                <h2>Total: ${{number_format($total, 2)}}</h2>
+                <h2>Total sin IVA: ${{number_format($total, 2)}}</h2>
+                <h2>IVA: ${{number_format($iva, 2)}}</h2>
+                <h2>Total con IVA: ${{number_format($total + $iva, 2)}}</h2>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>

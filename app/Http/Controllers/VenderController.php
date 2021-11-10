@@ -6,8 +6,9 @@ use App\Cliente;
 use App\Producto;
 use App\ProductoVendido;
 use App\Venta;
+use App\Configuracion;
 use Illuminate\Http\Request;
-
+use Auth;
 class VenderController extends Controller
 {
 
@@ -24,12 +25,19 @@ class VenderController extends Controller
     {
         // Crear una venta
         $venta = new Venta();
+
+        //Validar que exista el registro que contenga este id
         $venta->id_cliente = $request->input("id_cliente");
+        $venta->id_user = Auth::user()->id;
+        
         $venta->saveOrFail();
         $idVenta = $venta->id;
         $productos = $this->obtenerProductos();
+
+        $total = 0;
         // Recorrer carrito de compras
         foreach ($productos as $producto) {
+            $total += $producto->cantidad * $producto->precio_venta;
             // El producto que se vende...
             $productoVendido = new ProductoVendido();
             $productoVendido->fill([
@@ -42,10 +50,20 @@ class VenderController extends Controller
             // Lo guardamos
             $productoVendido->saveOrFail();
             // Y restamos la existencia del original
-            $productoActualizado = Producto::find($producto->id);
+           /*  $productoActualizado = Producto::find($producto->id);
             $productoActualizado->existencia -= $productoVendido->cantidad;
-            $productoActualizado->saveOrFail();
+            $productoActualizado->saveOrFail(); */
         }
+        $configuracion_iva = Configuracion::where("nombre", "=", "iva")->first();
+              
+        $iva = $total * $configuracion_iva->valor;
+
+        $venta->precio_bruto = $total;
+        $venta->iva = $iva;
+        $venta->precio_neto = $iva + $total;
+
+        $venta->saveOrFail();
+
         $this->vaciarProductos();
         return redirect()
             ->route("vender.index")
@@ -106,29 +124,19 @@ class VenderController extends Controller
 
     private function agregarProductoACarrito($producto)
     {
-        if ($producto->existencia <= 0) {
-            return redirect()->route("vender.index")
-                ->with([
-                    "mensaje" => "No hay existencias del producto",
-                    "tipo" => "danger"
-                ]);
-        }
+        
         $productos = $this->obtenerProductos();
         $posibleIndice = $this->buscarIndiceDeProducto($producto->codigo_barras, $productos);
         // Es decir, producto no fue encontrado
         if ($posibleIndice === -1) {
             $producto->cantidad = 1;
             array_push($productos, $producto);
+            
         } else {
-            if ($productos[$posibleIndice]->cantidad + 1 > $producto->existencia) {
-                return redirect()->route("vender.index")
-                    ->with([
-                        "mensaje" => "No se pueden agregar más productos de este tipo, se quedarían sin existencia",
-                        "tipo" => "danger"
-                    ]);
-            }
+            
             $productos[$posibleIndice]->cantidad++;
         }
+        
         $this->guardarProductos($productos);
     }
 
@@ -149,14 +157,24 @@ class VenderController extends Controller
      */
     public function index()
     {
+        
         $total = 0;
+        $iva = 0;
+        
         foreach ($this->obtenerProductos() as $producto) {
             $total += $producto->cantidad * $producto->precio_venta;
+            $configuracion_iva = Configuracion::where("nombre", "=", "iva")->first();
+              
+            $iva = $total * $configuracion_iva->valor;
+        
         }
+
         return view("vender.vender",
             [
-                "total" => $total,
+                "total"    => $total,
+                "iva"      => $iva,
                 "clientes" => Cliente::all(),
-            ]);
+            ]
+        );
     }
 }

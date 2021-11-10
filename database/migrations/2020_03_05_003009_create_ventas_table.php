@@ -15,9 +15,9 @@ class CreateVentasTable extends Migration
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
-            $table->decimal("precio_bruto", 9, 2);
-            $table->decimal("iva", 9, 2);
-            $table->decimal("precio_neto", 9, 2);
+            $table->decimal("precio_bruto", 9, 2)->nullable();
+            $table->decimal("iva", 9, 2)->nullable();
+            $table->decimal("precio_neto", 9, 2)->nullable();
 
             
             $table->unsignedBigInteger('id_cliente');

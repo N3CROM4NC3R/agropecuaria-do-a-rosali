@@ -44,6 +44,13 @@ Route::middleware("auth")
         Route::put("/productos/{producto}", "ProductosController@update")->name("productos.update");
         Route::delete("/productos/{producto}", "ProductosController@destroy")->name("productos.destroy");
 
+        Route::get("/proveedores", "ProveedoresController@index")->name("proveedores.index");
+        Route::get("/proveedores/{proveedor}/edit", "ProveedoresController@edit")->name("proveedores.edit");
+        Route::get("/proveedores/create", "ProveedoresController@create")->name("proveedores.create");
+        Route::post("/proveedores", "ProveedoresController@store")->name("proveedores.store");
+        Route::put("/proveedores/{proveedor}", "ProveedoresController@update")->name("proveedores.update");
+        Route::delete("/proveedores/{proveedor}", "ProveedoresController@destroy")->name("proveedores.destroy");
+
 
         
         Route::get("/ventas", "VentasController@index")->name("ventas.index");

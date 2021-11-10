@@ -61,6 +61,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route("clientes.index")}}">Clientes&nbsp;<i class="fa fa-users"></i></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route("proveedores.index")}}">Proveedores&nbsp;<i class="fa fa-users"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route("configuraciones.index")}}">Configuraciones&nbsp;<i class="fa fa-users"></i></a>
+                </li>
             <!-- @endguest -->
         </ul>
         <ul class="navbar-nav ml-auto">

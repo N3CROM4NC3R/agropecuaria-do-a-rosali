@@ -52,9 +52,8 @@ Route::middleware("auth")
         Route::get("/ventas/ticket", "VentasController@ticket")->name("ventas.ticket");
 
 
-
-        /* Route::resource("ventas", "VentasController"); */
-
+        Route::get("/configuraciones", "ConfiguracionesController@index")->name("configuraciones.index");
+        Route::put("/configuraciones", "ConfiguracionesController@update")->name("configuraciones.update");
 
         Route::get("/vender", "VenderController@index")->name("vender.index");
         Route::post("/productoDeVenta", "VenderController@agregarProductoVenta")->name("agregarProductoVenta");

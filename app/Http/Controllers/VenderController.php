@@ -58,9 +58,9 @@ class VenderController extends Controller
               
         $iva = $total * $configuracion_iva->valor;
 
-        $venta->precio_bruto = $total;
-        $venta->iva = $iva;
-        $venta->precio_neto = $iva + $total;
+        $venta->precio_bruto = number_format($total,2);
+        $venta->iva = number_format($iva,2);
+        $venta->precio_neto = number_format($iva + $total,2);
 
         $venta->saveOrFail();
 
@@ -163,12 +163,12 @@ class VenderController extends Controller
         
         foreach ($this->obtenerProductos() as $producto) {
             $total += $producto->cantidad * $producto->precio_venta;
-            $configuracion_iva = Configuracion::where("nombre", "=", "iva")->first();
-              
-            $iva = $total * $configuracion_iva->valor;
+                  
         
         }
-
+        $configuracion_iva = Configuracion::where("nombre", "=", "iva")->first();
+        $iva = $total * $configuracion_iva->valor;
+        
         return view("vender.vender",
             [
                 "total"    => $total,

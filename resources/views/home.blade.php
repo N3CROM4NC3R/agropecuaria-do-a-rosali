@@ -6,7 +6,7 @@
     </div>
     @foreach([
     ["productos", "ventas", "vender", "clientes"],
-    ["usuarios","proveedores","configuraciones"]
+    ["usuarios","proveedores","productos_comprados","configuraciones"]
     ] as $modulos)
         <div class="col-12 pb-2">
             <div class="row">
@@ -16,10 +16,13 @@
                             <img class="card-img-top" src="{{url("/img/$modulo.png")}}">
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    {{$modulo === "acerca_de" ? "Acerca de" : ucwords($modulo)}}
+                                    {{$modulo === "acerca_de" ? "Acerca de" : ""}}
+                                    {{$modulo === "productos_comprados" ? "Productos comprados" : ucwords($modulo)}}
                                 </h5>
                                 <a href="{{route("$modulo.index")}}" class="btn btn-success">
-                                    Ir a&nbsp;{{$modulo === "acerca_de" ? "Acerca de" : ucwords($modulo)}}
+                                    Ir a&nbsp;{{$modulo === "acerca_de" ? "Acerca de" : ""}}
+                                    {{$modulo === "productos_comprados" ? "Productos comprados" : ucwords($modulo)}}
+
                                     <i class="fa fa-arrow-right"></i>
                                 </a>
                             </div>

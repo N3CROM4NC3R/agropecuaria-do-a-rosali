@@ -65,7 +65,10 @@
                     <a class="nav-link" href="{{route("proveedores.index")}}">Proveedores&nbsp;<i class="fa fa-users"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route("configuraciones.index")}}">Configuraciones&nbsp;<i class="fa fa-users"></i></a>
+                    <a class="nav-link" href="{{route("productos_comprados.index")}}">Productos comprados&nbsp;<i class="fa fa-box"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route("configuraciones.index")}}">Configuraciones&nbsp;<i class="fa fa-cog"></i></a>
                 </li>
             <!-- @endguest -->
         </ul>

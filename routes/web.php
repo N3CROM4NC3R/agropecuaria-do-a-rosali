@@ -51,6 +51,12 @@ Route::middleware("auth")
         Route::put("/proveedores/{proveedor}", "ProveedoresController@update")->name("proveedores.update");
         Route::delete("/proveedores/{proveedor}", "ProveedoresController@destroy")->name("proveedores.destroy");
 
+        Route::get("/productos-comprados", "ProductosCompradosController@index")->name("productos_comprados.index");
+        Route::get("/productos-comprados/{producto_comprado}/edit", "ProductosCompradosController@edit")->name("productos_comprados.edit");
+        Route::get("/productos-comprados/create", "ProductosCompradosController@create")->name("productos_comprados.create");
+        Route::post("/productos-comprados", "ProductosCompradosController@store")->name("productos_comprados.store");
+        Route::put("/productos-comprados/{producto_comprado}", "ProductosCompradosController@update")->name("productos_comprados.update");
+        Route::delete("/productos-comprados/{producto_comprado}", "ProductosCompradosController@destroy")->name("productos_comprados.destroy");
 
         
         Route::get("/ventas", "VentasController@index")->name("ventas.index");

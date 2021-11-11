@@ -66,7 +66,7 @@ class VenderController extends Controller
 
         $this->vaciarProductos();
         return redirect()
-            ->route("vender.index")
+            ->route("ventas.show",$venta)
             ->with("mensaje", "Venta terminada");
     }
 

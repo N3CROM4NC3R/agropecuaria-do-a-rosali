@@ -63,10 +63,10 @@ Route::middleware("auth")
         Route::delete("/productos-comprados/{producto_comprado}", "ProductosCompradosController@destroy")->name("productos_comprados.destroy");
 
         
+        Route::get("/ventas/ticket", "VentasController@ticket")->name("ventas.ticket");
         Route::get("/ventas", "VentasController@index")->name("ventas.index");
         Route::get("/ventas/{venta}", "VentasController@show")->name("ventas.show");
         Route::delete("/ventas/{venta}", "VentasController@destroy")->name("ventas.destroy");
-        Route::get("/ventas/ticket", "VentasController@ticket")->name("ventas.ticket");
 
 
         Route::get("/configuraciones", "ConfiguracionesController@index")->name("configuraciones.index");

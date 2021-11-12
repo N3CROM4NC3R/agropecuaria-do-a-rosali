@@ -23,6 +23,10 @@ Route::get("/logout", function () {
 
 Route::middleware("auth")
     ->group(function () {
+        Route::get("/estadisticas", "EstadisticasController@index")->name("estadisticas.index");
+        
+        
+        
         Route::resource("clientes", "ClientesController");
         
         

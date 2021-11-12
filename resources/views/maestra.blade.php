@@ -68,6 +68,9 @@
                     <a class="nav-link" href="{{route("productos_comprados.index")}}">Productos comprados&nbsp;<i class="fa fa-box"></i></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{route("estadisticas.index")}}">Estadisticas&nbsp;<i class="fa fa-line-chart"></i></a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{route("configuraciones.index")}}">Configuraciones&nbsp;<i class="fa fa-cog"></i></a>
                 </li>
             <!-- @endguest -->

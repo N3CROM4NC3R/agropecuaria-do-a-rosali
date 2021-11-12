@@ -6,7 +6,8 @@
     </div>
     @foreach([
     ["productos", "ventas", "vender", "clientes"],
-    ["usuarios","proveedores","productos_comprados","configuraciones"]
+    ["usuarios","proveedores","productos_comprados","estadisticas"],
+    ["configuraciones"]
     ] as $modulos)
         <div class="col-12 pb-2">
             <div class="row">

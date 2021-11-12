@@ -47,12 +47,9 @@ class VenderController extends Controller
                 "precio" => $producto->precio_venta,
                 "cantidad" => $producto->cantidad,
             ]);
-            // Lo guardamos
+    
             $productoVendido->saveOrFail();
-            // Y restamos la existencia del original
-           /*  $productoActualizado = Producto::find($producto->id);
-            $productoActualizado->existencia -= $productoVendido->cantidad;
-            $productoActualizado->saveOrFail(); */
+            
         }
         $configuracion_iva = Configuracion::where("nombre", "=", "iva")->first();
               
